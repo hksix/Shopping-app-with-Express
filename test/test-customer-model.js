@@ -11,4 +11,17 @@ describe('Customers', () =>{
                 done();
             });
     });
+    it('Should be able to get a customer from a database',(done)=>{
+        let myCustomer = new Customer();
+        myCustomer
+            .get(1)
+            .then((results)=>{
+                // console.log(results);
+                console.log(myCustomer.name);
+                console.log(myCustomer.email);
+                console.log(myCustomer.address);
+                console.log(myCustomer.password);
+                done();
+        });
+    });
 });
