@@ -12,13 +12,25 @@ class Customer{
         this.password = password;
     }
     save(){
-        return db.one(`
+        if(this.customer_id) {
+            return db.one(`
+            UPDATE customers
+            SET
+                name=${this.name},
+                email=${this.email},
+                address=${this.address}
+            where customer_id=${this.customer_id}
+            `);
+
+        } else {
+            return db.one(`
             INSERT INTO customers 
             (name, email, address, password)
             values
             ('${this.name}','${this.email}','${this.address}','${this.password}')
             returning customer_id;
         `);
+        }
     }
     static get(id){
         return db.one(`
