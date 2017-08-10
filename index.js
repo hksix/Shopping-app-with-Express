@@ -1,3 +1,13 @@
+require('dotenv').config()
+
+
+// var db = require('db')
+// db.connect({
+//   host: process.env.DB_HOST,
+//   username: process.env.DB_USER,
+//   password: process.env.DB_PASS
+// })
+
 // express
 const express = require('express');
 const app = express();
